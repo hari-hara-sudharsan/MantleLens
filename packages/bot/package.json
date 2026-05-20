@@ -11,6 +11,8 @@
   "license": "ISC",
   "type": "module",
   "dependencies": {
-    "node-telegram-bot-api": "^0.67.0"
+    "@mantleguard/core": "workspace:*",
+    "node-telegram-bot-api": "^0.67.0",
+    "openai": "^6.38.0"
   }
 }

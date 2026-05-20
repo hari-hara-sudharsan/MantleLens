@@ -2,6 +2,11 @@ import TelegramBot from "node-telegram-bot-api"
 import OpenAI from "openai"
 import { analyzeContract } from "@mantleguard/core"
 
+if (!process.env.TELEGRAM_TOKEN) {
+    console.error("FATAL ERROR: TELEGRAM_TOKEN environment variable is not set. Please set it before running the bot.");
+    process.exit(1);
+}
+
 process.on("unhandledRejection", (reason, promise) => {
     console.error("Unhandled Rejection at:", promise, "reason:", reason);
 });
