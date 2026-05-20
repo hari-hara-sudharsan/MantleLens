@@ -14,3 +14,17 @@ contract Demo {
         uint y = total; // redundant SLOAD
     }
 }
+
+// Vulnerable contract to test
+contract VulnerableWithdraw {
+    mapping(address => uint) balances;
+
+    function withdraw(uint amount) public {
+        require(balances[msg.sender] >= amount, "not enough");
+
+        (bool ok, ) = msg.sender.call{value: amount}("");
+        require(ok);
+
+        balances[msg.sender] -= amount;
+    }
+}
